@@ -1,0 +1,23 @@
+{
+  "name": "vondra_finall_project_cypress_academy",
+  "version": "1.0.0",
+  "description": "This is a finall project of my course in Cypress academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jirivondra/vondra_finall_project_cypress_academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jirivondra/vondra_finall_project_cypress_academy/issues"
+  },
+  "homepage": "https://github.com/jirivondra/vondra_finall_project_cypress_academy#readme",
+  "devDependencies": {
+    "cypress": "^14.5.3"
+  }
+}
