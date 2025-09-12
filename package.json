@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/jirivondra/vondra_finall_project_cypress_academy#readme",
   "devDependencies": {
-    "cypress": "^14.5.3"
+    "@faker-js/faker": "^10.0.0",
+    "cypress": "^14.5.3",
+    "cypress-real-events": "^1.15.0",
+    "cypress-xpath": "^2.0.1"
+  },
+  "dependencies": {
+    "moment": "^2.30.1"
   }
 }

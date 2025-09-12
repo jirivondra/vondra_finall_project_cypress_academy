@@ -14,4 +14,13 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
+import 'cypress-xpath';
+import 'cypress-real-events/support';
+
+
+Cypress.Commands.add('clearCacheAll', () => {
+  cy.clearAllCookies();
+  cy.clearAllLocalStorage();
+  cy.clearAllSessionStorage();
+});
