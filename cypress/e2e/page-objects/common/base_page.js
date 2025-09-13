@@ -1,6 +1,6 @@
 export class BasePage {
     constructor(path) {
-        this.baseUrl = cypress.env('frontend');
+        this.baseUrl = Cypress.env('frontend');
         this.path = path;
     }
 
