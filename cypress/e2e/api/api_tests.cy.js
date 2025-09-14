@@ -17,9 +17,8 @@ describe('Login by API', () => {
     userApi.login(user.username, user.password).then((response) => {
       expect(response.status).to.eq(201); 
       const accessToken = response.body.access_token;
-    userApi.setAccessToken(accessToken);
-    }).then(() => {
+      userApi.setAccessToken(accessToken)
+    })
     new Dashboard().visit();
-    });
   });
 });

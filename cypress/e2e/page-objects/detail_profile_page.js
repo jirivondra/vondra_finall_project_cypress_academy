@@ -12,6 +12,7 @@ export class DetailProfilePage {
         this.age = customElement('[data-testid="chage-age-input"]');
         this.saveChanges = customElement('[data-testid="save-changes-button"]');
         this.detailProfileTiele = customElement('[data-testid="profile-details-title"]')
+        this.cancelEditButton = customElement('[data-testid="toggle-edit-profile-button"]')
     }
     
     headlineIsVisible() {
@@ -62,6 +63,12 @@ export class DetailProfilePage {
         this.saveChanges.isVisible();
         return this;
     }
+
+    clickCancelEditButton() {
+        this.cancelEditButton.click()
+        return new Dashboard()
+    }
+
     clickSaveChangesButton() {
         this.saveChanges.click();
         return new Dashboard()

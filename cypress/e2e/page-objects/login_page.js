@@ -9,10 +9,13 @@ export class LoginPage extends BasePage {
         this.userName = customElement('[data-testid="username-input"]')
         this.passWord = customElement('[data-testid="password-input"]')
         this.loginButton = customElement('[data-testid="submit-button"]')
- 
     }
 
 
+    clearCache() {
+        cy.clearCacheAll()
+        return this
+    }
 
     typeName(userName) {
     this.userName.type(userName)
@@ -49,7 +52,10 @@ export class LoginPage extends BasePage {
         return new Dashboard()
     }
 
-
-
-
+    login(user, passWord){
+        this.typeName(user)
+        this.typePassWord(passWord)
+        this.clickLoginButton()
+        return new Dashboard()
+    }
 } 

@@ -114,15 +114,15 @@ export const customElement = (selector) => {
       }
       return this
     },
-    beChecked(xpath) {
+    beChecked() {
 
       if (isXPath === false) {
         cy.get(selector).should('be.checked')
       } else {
         cy.xpath(selector).should('be.checked')
       }
-    return this;
-},
+    return this
+    },
     get() {
     return isXPath === false ? cy.get(selector) : cy.xpath(selector);
     },
