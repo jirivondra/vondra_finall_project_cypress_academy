@@ -1,4 +1,4 @@
-import { CreatAccount } from "../../../api/creat_account_api";
+import { Account } from "../../../api/account_api";
 import { UserApi } from "../../../api/user_api";
 import { LoginPage } from "../page-objects/login_page";
 import { RegistrationPage } from "../page-objects/registration_page";
@@ -38,11 +38,12 @@ const testData = {
 
 
 describe('', () => {
-    const userApi = new UserApi()
     beforeEach(()=>{
         new LoginPage().visit()
     })
     it('', () => {
+    const account = new Account()
+
     cy.intercept( Cypress.env("backend") + "/tegb/login").as('login_api')
     cy.intercept( Cypress.env("backend") + "/tegb/profile").as('profile_api')
     cy.intercept( Cypress.env("backend") + "/tegb/accounts").as('accounts_api')
@@ -69,7 +70,7 @@ describe('', () => {
             accessToken: accessToken,
             startBalance: 1000
         }
-    new CreatAccount().creatAccount(requestData).then((response)=>{
+   account.creatAccount(requestData).then((response)=>{
         expect(response.status).to.eq(201);
     })
     
