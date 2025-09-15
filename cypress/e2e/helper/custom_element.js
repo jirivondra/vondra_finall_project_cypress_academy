@@ -1,76 +1,78 @@
-import { cookie } from "../../../../../node_modules/request/index";
-
-export const customElement = (selector) => {
-  let isXPath
-  if (selector.startsWith(`//`) || selector.startsWith(`(//`) || selector.startsWith(`"//`) || selector.startsWith(`'//`)) {
+export const customElement = selector => {
+  let isXPath;
+  if (
+    selector.startsWith(`//`) ||
+    selector.startsWith(`(//`) ||
+    selector.startsWith(`"//`) ||
+    selector.startsWith(`'//`)
+  ) {
     isXPath = true;
   } else {
-    isXPath = false
+    isXPath = false;
   }
 
   const element = {
     isVisible() {
-
       if (isXPath === false) {
-        cy.get(selector).should("be.visible")
+        cy.get(selector).should('be.visible');
       } else {
-        cy.xpath(selector).should("be.visible")
-      }
-      return this
-    },
-    isNotVisible() {
-      if (isXPath === false) {
-        cy.get(selector).should("not.be.visible");
-      } else {
-        cy.xpath(selector).should("not.be.visible");
+        cy.xpath(selector).should('be.visible');
       }
       return this;
     },
-    isExist(){
+    isNotVisible() {
       if (isXPath === false) {
-        cy.get(selector).should('exist')
+        cy.get(selector).should('not.be.visible');
       } else {
-        cy.xpath(selector).should('exist')
+        cy.xpath(selector).should('not.be.visible');
       }
-      return this
+      return this;
+    },
+    isExist() {
+      if (isXPath === false) {
+        cy.get(selector).should('exist');
+      } else {
+        cy.xpath(selector).should('exist');
+      }
+      return this;
     },
     haveText(text) {
       if (isXPath === false) {
-        cy.get(selector).should("have.text", text);
+        cy.get(selector).should('have.text', text);
       } else {
-        cy.xpath(selector).should("have.text", text);
+        cy.xpath(selector).should('have.text', text);
       }
       return this;
     },
     containsText(text) {
       if (isXPath === false) {
-        cy.get(selector).should("contain.text", text);
+        cy.get(selector).should('contain.text', text);
       } else {
-        cy.xpath(selector).should("contain.text", text);
+        cy.xpath(selector).should('contain.text', text);
       }
       return this;
     },
     haveValue(value) {
       if (isXPath === false) {
-        cy.get(selector).should("have.value", value);
+        cy.get(selector).should('have.value', value);
       } else {
-        cy.xpath(selector).should("have.value", value);
+        cy.xpath(selector).should('have.value', value);
       }
       return this;
     },
     havePlaceholder(placeholder) {
       if (isXPath === false) {
-        cy.get(selector).should("have.attr", "placeholder", placeholder);
+        cy.get(selector).should('have.attr', 'placeholder', placeholder);
       } else {
-        cy.xpath(selector).should("have.attr", "placeholder", placeholder);
+        cy.xpath(selector).should('have.attr', 'placeholder', placeholder);
       }
       return this;
     },
     haveAttribute(attribute, value) {
-     if (isXPath === false) {
-        cy.get(selector).should("have.attr", attribute, value);
+      if (isXPath === false) {
+        cy.get(selector).should('have.attr', attribute, value);
       } else {
-        cy.xpath(selector).should("have.attr", attribute, value);
+        cy.xpath(selector).should('have.attr', attribute, value);
       }
       return this;
     },
@@ -100,32 +102,31 @@ export const customElement = (selector) => {
     },
     selectOption(option) {
       if (isXPath === false) {
-        cy.get(selector).select(option)
+        cy.get(selector).select(option);
       } else {
-        cy.xpath(selector).select(option)
+        cy.xpath(selector).select(option);
       }
-      return this
+      return this;
     },
-    checkOption(text){
+    checkOption() {
       if (isXPath === false) {
-        cy.get(selector).check()
+        cy.get(selector).check();
       } else {
-        cy.xpath(selector).check()
+        cy.xpath(selector).check();
       }
-      return this
+      return this;
     },
     beChecked() {
-
       if (isXPath === false) {
-        cy.get(selector).should('be.checked')
+        cy.get(selector).should('be.checked');
       } else {
-        cy.xpath(selector).should('be.checked')
+        cy.xpath(selector).should('be.checked');
       }
-    return this
+      return this;
     },
     get() {
-    return isXPath === false ? cy.get(selector) : cy.xpath(selector);
+      return isXPath === false ? cy.get(selector) : cy.xpath(selector);
     },
   };
-   return element;
+  return element;
 };
