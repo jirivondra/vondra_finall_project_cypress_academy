@@ -22,3 +22,7 @@ rad.json
 TestResults.xml
 
 cypress.env.json
+
+node_moduls/
+
+dist/
