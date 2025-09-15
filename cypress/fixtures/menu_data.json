@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "home",
+    "name": "Domů"
+  },
+  {
+    "slug": "accounts",
+    "name": "Účty"
+  },
+  {
+    "slug": "transaction",
+    "name": "Transakce"
+  },
+  {
+    "slug": "support",
+    "name": "Podpora"
+  }
+]

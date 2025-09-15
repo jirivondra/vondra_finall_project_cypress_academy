@@ -4,7 +4,11 @@
   "description": "This is a finall project of my course in Cypress academy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+  "lint": "eslint .",
+  "lint-fix": "eslint . --fix",
+  "start": "react-scripts start"
+
   },
   "repository": {
     "type": "git",

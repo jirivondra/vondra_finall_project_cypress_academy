@@ -1,28 +1,33 @@
 import { customElement } from '../helper/custom_element';
 import { Menu } from './common/menu';
+import { profilDetailsProfix, profileDetailHeader, accountsSection } from '../../fixtures/dashboard_data.json';
 
 export class Dashboard extends Menu {
   constructor() {
     super();
-    this.editProfilButton = customElement('[data-testid="toggle-edit-profile-button"]');
-    this.firstName = customElement('[data-testid="name"]');
-    this.firstNamePrefix = customElement('[data-testid="name"] strong');
-    this.lastName = customElement('[data-testid="surname"]');
-    this.lastNamePrefix = customElement('[data-testid="surname"] strong');
-    this.email = customElement('[data-testid="email"]');
-    this.emailPrefix = customElement('[data-testid="email"] strong');
-    this.phone = customElement('[data-testid="phone"]');
-    this.phonePrefix = customElement('[data-testid="phone"] strong');
-    this.age = customElement('[data-testid="age"]');
-    this.agePrefix = customElement('[data-testid="age"] strong');
+
     this.logOutButton = customElement('.logout-link');
     this.detailProfil = customElement('[data-testid="account-summary"]');
     this.detailProfilHeadLine = customElement('[data-testid="profile-details-title"]');
-    this.accountsSection = customElement('[data-testid="accounts-title"]');
+    this.editProfilButton = customElement('[data-testid="toggle-edit-profile-button"]');
+    this.accountSection = customElement('.accounts');
+    this.accountsTitle = customElement('[data-testid="accounts-title"]');
     this.accountAddButton = customElement('.account-action');
-    this.accountNumber = customElement('[data-testid="account-number-heading"]');
-    this.accountBalance = customElement('[data-testid="account-balance-heading"]');
-    this.accountType = customElement('[data-testid="account-type-heading"]');
+
+    this.profilDetailItems = profileDetailHeader.map(item => {
+      item.element = customElement(`[data-testid='${item.name}']`);
+      return item;
+    });
+
+    this.profilDetailPrefixItems = profilDetailsProfix.map(item => {
+      item.element = customElement(`[data-testid='${item.name}'] strong`);
+      return item;
+    });
+
+    this.accountsSectionItems = accountsSection.map(item => {
+      item.element = customElement(`[data-testid='${item.name}']`);
+      return item;
+    });
   }
 
   waitForProfileAPI(profileApi) {
