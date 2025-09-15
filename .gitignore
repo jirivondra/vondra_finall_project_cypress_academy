@@ -23,6 +23,6 @@ TestResults.xml
 
 cypress.env.json
 
-/node_moduls/
+/node_modules/
 
 /dist/
