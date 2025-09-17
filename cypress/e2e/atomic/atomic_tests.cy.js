@@ -4,8 +4,8 @@ import dashboardData from '../../fixtures/dashboard_data.json';
 import headerData from '../../fixtures/header_data.json';
 
 const testData = {
-  user: Cypress.env('tegb_user_atomic'),
-  passWord: Cypress.env('tegb_password_atomic'),
+  user: Cypress.env('tegb_user'),
+  passWord: Cypress.env('tegb_password'),
 };
 
 describe('Atomic Test For Dashboard', { testIsolation: false }, () => {

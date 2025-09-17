@@ -12,13 +12,5 @@ export class Menu extends Header {
       console.info(item.element);
       return item;
     });
-    // console.info(JSON.stringify(this.menuItems, null, 2));
-
-    // this.menuItemHome = customElement("//li[text()='Domů']");
-    // this.menuItemAccounts = customElement("//li[text()='Účty']");
-    // this.menuItemTransaction = customElement("//li[text()='Transakce']");
-    // this.menuItemSupport = customElement("//li[text()='Podpora']");
-
-    // console.info(JSON.stringify(this.menuItemAccounts, null, 2));
   }
 }

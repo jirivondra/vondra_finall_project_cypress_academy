@@ -1,15 +1,40 @@
 import { customElement } from '../cypress/e2e/helper/custom_element';
 
-export class Account {
+export class AccountAPI {
   constructor() {
-    this.apiUrlBeCreatAccount = Cypress.env('backend') + '/tegb/accounts/create';
-    this.apiUrlAddBalanceAccount = Cypress.env('backend') + '/tegb/accounts/change-balance';
+    this.apiUrlCreatAccount = Cypress.env('backend') + '/tegb/accounts/create';
+    this.apiUrlGetAccount = Cypress.env('backend') + '/tegb/accounts';
+    this.apiUrlProfile = Cypress.env('backend') + '/tegb/profile';
     this.type = 'Test';
     this.accountIdAlias = customElement('@accountId');
+    this.accessTokenAlias = customElement('@accessToken');
+    this.accountNumberAlias = customElement('@accountNumber');
+    this.balanceAlias = customElement('@balance');
+    this.apiHelper = customElement('api_helper');
+  }
+
+  interceptCreatAccountApi() {
+    return this.apiHelper.intercept(this.apiUrlGetAccount);
+  }
+  interceptProfilApi() {
+    return this.apiHelper.intercept(this.apiUrlProfile);
+  }
+
+  waitForLoginAPI(loginApi) {
+    customElement('').wait(loginApi);
+    return this;
   }
 
   creatAccesTokenAlias(data, alias) {
-    cy.wrap(data).as(alias);
+    customElement('').createAlias(data, alias);
+    return this;
+  }
+  creatBalanceAlias(data, alias) {
+    customElement('').createAlias(data, alias);
+    return this;
+  }
+  creatAccountNumberAlias(data, alias) {
+    customElement('').createAlias(data, alias);
     return this;
   }
 
@@ -21,7 +46,7 @@ export class Account {
   creatAccount(requestData) {
     return cy.request({
       method: 'POST',
-      url: this.apiUrlBeCreatAccount,
+      url: this.apiUrlCreatAccount,
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${requestData.accessToken}`,
@@ -29,21 +54,6 @@ export class Account {
       body: {
         startBalance: requestData.startBalance,
         type: this.type,
-      },
-    });
-  }
-
-  addBalance(requestData) {
-    return cy.request({
-      method: 'PATCH',
-      url: this.apiUrlAddBalanceAccount,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${requestData.accessToken}`,
-      },
-      body: {
-        accountId: requestData.accountId,
-        amount: requestData.amount,
       },
     });
   }

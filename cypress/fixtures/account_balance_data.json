@@ -1,5 +1,17 @@
 [
   {
-    "accountBalance": 1000
+    "accountBalance": 0
+  },
+  {
+    "accountBalance": 200000.52
+  },
+  {
+    "accountBalance": -12345
+  },
+  {
+    "accountBalance": -196000921
+  },
+  {
+    "accountBalance": 298000123
   }
- ]
+]

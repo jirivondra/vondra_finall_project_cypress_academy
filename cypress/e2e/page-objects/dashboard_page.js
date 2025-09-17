@@ -4,7 +4,7 @@ import { profilDetailsProfix, profileDetailHeader, accountsSection } from '../..
 
 export class Dashboard extends Menu {
   constructor() {
-    super();
+    super('/dashboard');
 
     this.logOutButton = customElement('.logout-link');
     this.detailProfil = customElement('[data-testid="account-summary"]');
@@ -13,6 +13,13 @@ export class Dashboard extends Menu {
     this.accountSection = customElement('.accounts');
     this.accountsTitle = customElement('[data-testid="accounts-title"]');
     this.accountAddButton = customElement('.account-action');
+    this.accountBalance = customElement('[data-testid="account-balance"]');
+    this.accountNumber = customElement('[data-testid="account-number"]');
+    this.firstName = customElement('[data-testid="name"]');
+    this.lastName = customElement('[data-testid="surname"]');
+    this.email = customElement('[data-testid="email"]');
+    this.phone = customElement('[data-testid="phone"]');
+    this.age = customElement('[data-testid="age"]');
 
     this.profilDetailItems = profileDetailHeader.map(item => {
       item.element = customElement(`[data-testid='${item.name}']`);
@@ -30,16 +37,31 @@ export class Dashboard extends Menu {
     });
   }
 
-  waitForProfileAPI(profileApi) {
-    cy.wait(profileApi);
+  waitForGetAccountsAPI(accountsAPI) {
+    customElement('').wait(accountsAPI);
     return this;
   }
-  waitForAccountsAPI(accountsAPI) {
-    cy.wait(accountsAPI);
+  waitForProfileAPI(accountsAPI) {
+    customElement('').wait(accountsAPI);
     return this;
   }
+
   waitForLoginAPI(loginApi) {
-    cy.wait(loginApi);
+    customElement('').wait(loginApi);
+    return this;
+  }
+
+  accountTypIsVisible() {
+    this.accountType.isVisible();
+    return this;
+  }
+  checkAccountNumber(accountNumber) {
+    this.accountNumber.haveText(accountNumber);
+    return this;
+  }
+
+  checkBalanceAmount(amount) {
+    this.accountBalance.containsText(amount);
     return this;
   }
 

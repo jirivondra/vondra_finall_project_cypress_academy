@@ -2,9 +2,14 @@ import { customElement } from '../cypress/e2e/helper/custom_element';
 
 export class UserApi {
   constructor() {
-    this.apiUrlBeLogin = Cypress.env('backend') + '/tegb/login';
+    this.apiUrlLogin = Cypress.env('backend') + '/tegb/login';
     this.method = 'POST';
     this.accessTokenAlias = customElement('@accessToken');
+    this.apiHelper = customElement('api_helper');
+  }
+
+  interceptLoginApi() {
+    return this.apiHelper.intercept(this.apiUrlLogin);
   }
 
   creatAccesTokenAlias(data, alias) {
@@ -17,16 +22,16 @@ export class UserApi {
     return this;
   }
 
-  login(username, password) {
+  login(requestData) {
     return cy.request({
-      method: this.method,
-      url: this.apiUrlBeLogin,
+      method: 'POST',
+      url: this.apiUrlLogin,
       headers: {
         'Content-Type': 'application/json',
       },
       body: {
-        username,
-        password,
+        username: requestData.userName,
+        password: requestData.password,
       },
     });
   }
