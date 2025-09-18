@@ -5,8 +5,8 @@ import { Dashboard } from './dashboard_page';
 export class DetailProfilePage {
   constructor() {
     this.HeadlineDetailProfile = customElement('[data-testid="profile-details-title"]');
-    this.firstName = customElement('[data-testid="chage-name-input"]');
-    this.lastName = customElement('[data-testid="chage-surname-input"]');
+    this.firstname = customElement('[data-testid="chage-name-input"]');
+    this.lastname = customElement('[data-testid="chage-surname-input"]');
     this.email = customElement('[data-testid="chage-email-input"]');
     this.telephone = customElement('[data-testid="chage-phone-input"]');
     this.age = customElement('[data-testid="chage-age-input"]');
@@ -19,20 +19,20 @@ export class DetailProfilePage {
     this.detailProfileTiele.isVisible();
     return this;
   }
-  fillFristName(firstName) {
-    this.firstName.type(firstName);
+  fillFristName(firstname) {
+    this.firstname.type(firstname);
     return this;
   }
-  checkFirstName(firstName) {
-    this.firstName.haveValue(firstName);
+  checkfirstname(firstname) {
+    this.firstname.haveValue(firstname);
     return this;
   }
-  fillLastName(lastName) {
-    this.lastName.type(lastName);
+  filllastname(lastname) {
+    this.lastname.type(lastname);
     return this;
   }
-  checkLastName(lastName) {
-    this.lastName.haveValue(lastName);
+  checklastname(lastname) {
+    this.lastname.haveValue(lastname);
     return this;
   }
   fillEmail(email) {

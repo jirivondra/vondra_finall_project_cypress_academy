@@ -16,8 +16,8 @@ export class Dashboard extends Menu {
     this.accountAddButton = customElement('.account-action');
     this.accountBalance = customElement('[data-testid="account-balance"]');
     this.accountNumber = customElement('[data-testid="account-number"]');
-    this.firstName = customElement('[data-testid="name"]');
-    this.lastName = customElement('[data-testid="surname"]');
+    this.firstname = customElement('[data-testid="name"]');
+    this.lastname = customElement('[data-testid="surname"]');
     this.email = customElement('[data-testid="email"]');
     this.phone = customElement('[data-testid="phone"]');
     this.age = customElement('[data-testid="age"]');
@@ -75,12 +75,12 @@ export class Dashboard extends Menu {
     this.editProfilButton.click();
     return new DetailProfilePage();
   }
-  checkFirtName(firstName) {
-    this.firstName.haveText('Jméno: ' + firstName);
+  checkFirtName(firstname) {
+    this.firstname.haveText('Jméno: ' + firstname);
     return this;
   }
-  checkLastName(lastName) {
-    this.lastName.haveText('Příjmení: ' + lastName);
+  checklastname(lastname) {
+    this.lastname.haveText('Příjmení: ' + lastname);
     return this;
   }
   checkEmail(email) {

@@ -5,18 +5,18 @@ import { RegistrationPage } from '../page-objects/registration_page';
 import { faker } from '@faker-js/faker';
 
 
-const firstName = faker.person.firstName();
-const lastName = faker.person.lastName();
-const userName = faker.internet.username({ firstName: firstName, lastName: lastName });
+const firstname = faker.person.firstName();
+const lastname = faker.person.lastName();
+const userName = faker.internet.username({ firstname: firstname, lastname: lastname });
 const password = faker.internet.password();
 const phone = faker.phone.number({ style: 'international' });
-const email = faker.internet.email({ firstName: firstName, lastName: lastName });
+const email = faker.internet.email({ firstname: firstname, lastname: lastname });
 const age = faker.number.int({ min: 1, max: 99 });
 const accountBalance = faker.number.int({ min: 1, max: 999999 });
 
 const testData = {
-  firstName: firstName,
-  lastName: lastName,
+  firstname: firstname,
+  lastname: lastname,
   userName: userName,
   password: password,
   phone: phone,
@@ -78,10 +78,10 @@ describe('End-to-End User Registration Flow', () => {
             .editProfilButtonIsVisiable()
             .clickEditProfile()
             .headlineIsVisible()
-            .fillFristName(testData.firstName)
-            .checkFirstName(testData.firstName)
-            .fillLastName(testData.lastName)
-            .checkLastName(testData.lastName)
+            .fillFristName(testData.firstname)
+            .checkfirstname(testData.firstname)
+            .filllastname(testData.lastname)
+            .checklastname(testData.lastname)
             .fillEmail(testData.email)
             .checkEmail(testData.email)
             .fillTelephone(testData.phone)
@@ -90,8 +90,8 @@ describe('End-to-End User Registration Flow', () => {
             .checkAge(testData.age)
             .saveChangesButtonIsVisible()
             .clickSaveChangesButton()
-            .checkFirtName(testData.firstName)
-            .checkLastName(testData.lastName)
+            .checkFirtName(testData.firstname)
+            .checklastname(testData.lastname)
             .checkEmail(testData.email)
             .checkTelephoneNumber(testData.phone)
             .checkAge(testData.age)

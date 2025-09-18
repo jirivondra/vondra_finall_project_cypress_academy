@@ -7,112 +7,110 @@ export const customElement = selector => {
     selector.startsWith(`'//`)
   ) {
     isXPath = true;
-  } else {
-    isXPath = false;
   }
 
   const element = {
     isVisible() {
-      if (isXPath === false) {
-        cy.get(selector).should('be.visible');
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('be.visible');
+      } else {
+        cy.get(selector).should('be.visible');
       }
       return this;
     },
     isNotVisible() {
-      if (isXPath === false) {
-        cy.get(selector).should('not.be.visible');
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('not.be.visible');
+      } else {
+       cy.get(selector).should('not.be.visible');
       }
       return this;
     },
     isExist() {
-      if (isXPath === false) {
-        cy.get(selector).should('exist');
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('exist');
+      } else {
+        cy.get(selector).should('exist');
       }
       return this;
     },
     haveText(text) {
-      if (isXPath === false) {
-        cy.get(selector).should('have.text', text);
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('have.text', text);
+      } else {
+        cy.get(selector).should('have.text', text);
       }
       return this;
     },
     containsText(text) {
-      if (isXPath === false) {
-        cy.get(selector).should('contain.text', text);
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('contain.text', text);
+      } else {
+        cy.get(selector).should('contain.text', text);
       }
       return this;
     },
     haveValue(value) {
-      if (isXPath === false) {
-        cy.get(selector).should('have.value', value);
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('have.value', value);
+      } else {
+        cy.get(selector).should('have.value', value);
       }
       return this;
     },
     havePlaceholder(placeholder) {
-      if (isXPath === false) {
-        cy.get(selector).should('have.attr', 'placeholder', placeholder);
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('have.attr', 'placeholder', placeholder);
+      } else {
+        cy.get(selector).should('have.attr', 'placeholder', placeholder);
       }
       return this;
     },
     haveAttribute(attribute, value) {
-      if (isXPath === false) {
-        cy.get(selector).should('have.attr', attribute, value);
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('have.attr', attribute, value);
+      } else {
+        cy.get(selector).should('have.attr', attribute, value);
       }
       return this;
     },
     click() {
-      if (isXPath === false) {
-        cy.get(selector).click();
-      } else {
+      if (isXPath) {
         cy.xpath(selector).click();
+      } else {
+        cy.get(selector).click();
       }
       return this;
     },
     type(value) {
-      if (isXPath === false) {
-        cy.get(selector).type(value);
-      } else {
+      if (isXPath) {
         cy.xpath(selector).type(value);
+      } else {
+        cy.get(selector).type(value);
       }
       return this;
     },
     clear() {
-      if (isXPath === false) {
-        cy.get(selector).clear();
-      } else {
+      if (isXPath) {
         cy.xpath(selector).clear();
+      } else {
+        cy.get(selector).clear();
       }
       return this;
     },
     selectOption(option) {
-      if (isXPath === false) {
-        cy.get(selector).select(option);
-      } else {
+      if (isXPath) {
         cy.xpath(selector).select(option);
+      } else {
+        cy.get(selector).select(option);
       }
       return this;
     },
     checkOption() {
-      if (isXPath === false) {
-        cy.get(selector).check();
-      } else {
+      if (isXPath) {
         cy.xpath(selector).check();
+      } else {
+        cy.get(selector).check();
       }
       return this;
     },

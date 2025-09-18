@@ -10,17 +10,17 @@ describe('Data Driven Test for Account Balances', () => {
   const accountApi = new AccountAPI();
 
   accountBalances.forEach(balance => {
-    const firstName = faker.person.firstName();
-    const lastName = faker.person.lastName();
-    const userName = faker.internet.username({ firstName: firstName, lastName: lastName });
+    const firstname = faker.person.firstName();
+    const lastname = faker.person.lastName();
+    const userName = faker.internet.username({ firstname: firstname, lastname: lastname });
     const password = faker.internet.password();
     const phone = faker.phone.number({ style: 'international' });
-    const email = faker.internet.email({ firstName: firstName, lastName: lastName });
+    const email = faker.internet.email({ firstname: firstname, lastname: lastname });
     const age = faker.number.int({ min: 1, max: 99 });
 
     const testData = {
-      firstName: firstName,
-      lastName: lastName,
+      firstname: firstname,
+      lastname: lastname,
       userName: userName,
       password: password,
       phone: phone,
