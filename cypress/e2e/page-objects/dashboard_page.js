@@ -1,4 +1,5 @@
 import { customElement } from '../helper/custom_element';
+import { wait } from '../helper/utils';
 import { Menu } from './common/menu';
 import { profilDetailsProfix, profileDetailHeader, accountsSection } from '../../fixtures/dashboard_data.json';
 
@@ -38,16 +39,16 @@ export class Dashboard extends Menu {
   }
 
   waitForGetAccountsAPI(accountsAPI) {
-    customElement('').wait(accountsAPI);
+    wait(accountsAPI);
     return this;
   }
   waitForProfileAPI(accountsAPI) {
-    customElement('').wait(accountsAPI);
+    wait(accountsAPI);
     return this;
   }
 
   waitForLoginAPI(loginApi) {
-    customElement('').wait(loginApi);
+    wait(loginApi);
     return this;
   }
 

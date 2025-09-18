@@ -1,4 +1,5 @@
 import { customElement } from '../cypress/e2e/helper/custom_element';
+import { createAlias, wait, intercept } from '../cypress/e2e/helper/utils';
 
 export class AccountAPI {
   constructor() {
@@ -10,36 +11,35 @@ export class AccountAPI {
     this.accessTokenAlias = customElement('@accessToken');
     this.accountNumberAlias = customElement('@accountNumber');
     this.balanceAlias = customElement('@balance');
-    this.apiHelper = customElement('api_helper');
   }
 
   interceptCreatAccountApi() {
-    return this.apiHelper.intercept(this.apiUrlGetAccount);
+    return intercept(this.apiUrlGetAccount);
   }
   interceptProfilApi() {
-    return this.apiHelper.intercept(this.apiUrlProfile);
+    return intercept(this.apiUrlProfile);
   }
 
   waitForLoginAPI(loginApi) {
-    customElement('').wait(loginApi);
+    wait(loginApi);
     return this;
   }
 
-  creatAccesTokenAlias(data, alias) {
-    customElement('').createAlias(data, alias);
+  createAccessTokenAlias(data, alias) {
+    createAlias(data, alias);
     return this;
   }
   creatBalanceAlias(data, alias) {
-    customElement('').createAlias(data, alias);
+    createAlias(data, alias);
     return this;
   }
   creatAccountNumberAlias(data, alias) {
-    customElement('').createAlias(data, alias);
+    createAlias(data, alias);
     return this;
   }
 
   creatAccountIdAlias(data, alias) {
-    cy.wrap(data).as(alias);
+    createAlias(data, alias);
     return this;
   }
 

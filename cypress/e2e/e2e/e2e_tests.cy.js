@@ -4,6 +4,7 @@ import { LoginPage } from '../page-objects/login_page';
 import { RegistrationPage } from '../page-objects/registration_page';
 import { faker } from '@faker-js/faker';
 
+
 const firstName = faker.person.firstName();
 const lastName = faker.person.lastName();
 const userName = faker.internet.username({ firstName: firstName, lastName: lastName });
@@ -49,7 +50,7 @@ describe('End-to-End User Registration Flow', () => {
       .checkSuccessRegistrationTitle();
     userApi.login(testData).then(response => {
       expect(response.status).to.eq(201);
-      new UserApi().creatAccesTokenAlias(response.body.access_token, 'accessToken').setAccessToken('@accessToken');
+      new UserApi().createAccessTokenAlias(response.body.access_token, 'accessToken').setAccessToken('@accessToken');
     });
     userApi.accessTokenAlias.get().then(accessToken => {
       const requestData = {

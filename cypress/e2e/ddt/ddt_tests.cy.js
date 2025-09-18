@@ -40,7 +40,7 @@ describe('Data Driven Test for Account Balances', () => {
       userApi.login(testData).then(response => {
         expect(response.status).to.eq(201);
         cy.log('Response body:', JSON.stringify(response.body, null, 2));
-        new UserApi().creatAccesTokenAlias(response.body.access_token, 'accessToken').setAccessToken('@accessToken');
+        new UserApi().createAccessTokenAlias(response.body.access_token, 'accessToken').setAccessToken('@accessToken');
       });
       userApi.accessTokenAlias.get().then(accessToken => {
         const requestData = {

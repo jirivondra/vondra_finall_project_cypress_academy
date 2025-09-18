@@ -1,5 +1,5 @@
 export const customElement = selector => {
-  let isXPath;
+  let isXPath = false
   if (
     selector.startsWith(`//`) ||
     selector.startsWith(`(//`) ||
@@ -117,27 +117,15 @@ export const customElement = selector => {
       return this;
     },
     beChecked() {
-      if (isXPath === false) {
-        cy.get(selector).should('be.checked');
-      } else {
+      if (isXPath) {
         cy.xpath(selector).should('be.checked');
+      } else {
+        cy.get(selector).should('be.checked');
       }
       return this;
     },
     get() {
       return isXPath === false ? cy.get(selector) : cy.xpath(selector);
-    },
-    intercept(url) {
-      return cy.intercept(url);
-    },
-
-    wait(alias) {
-      return cy.wait(alias);
-    },
-
-    createAlias(data, alias) {
-      cy.wrap(data).as(alias);
-      return this;
     },
   };
   return element;

@@ -1,24 +1,26 @@
 import { customElement } from '../cypress/e2e/helper/custom_element';
+import { intercept, setCookie, createAlias } from '../cypress/e2e/helper/utils';
 
 export class UserApi {
   constructor() {
     this.apiUrlLogin = Cypress.env('backend') + '/tegb/login';
     this.method = 'POST';
     this.accessTokenAlias = customElement('@accessToken');
-    this.apiHelper = customElement('api_helper');
+
+
   }
 
   interceptLoginApi() {
-    return this.apiHelper.intercept(this.apiUrlLogin);
+    return intercept(this.apiUrlLogin);
   }
 
-  creatAccesTokenAlias(data, alias) {
-    cy.wrap(data).as(alias);
+  createAccessTokenAlias(data, alias) {
+    createAlias(data, alias)
     return this;
   }
 
   setAccessToken(accessToken) {
-    cy.setCookie('access_token', accessToken);
+   setCookie('access_token', accessToken);
     return this;
   }
 
