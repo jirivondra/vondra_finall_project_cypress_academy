@@ -6,19 +6,18 @@ import { RegistrationPage } from '../page-objects/registration_page';
 import { LoginPage } from '../page-objects/login_page';
 
 describe('Data Driven Test for Account Balances', () => {
-  // const loginPage = new LoginPage();
   const userApi = new UserApi();
   const accountApi = new AccountAPI();
 
-  const firstName = faker.person.firstName();
-  const lastName = faker.person.lastName();
-  const userName = faker.internet.username({ firstName: firstName, lastName: lastName });
-  const password = faker.internet.password();
-  const phone = faker.phone.number({ style: 'international' });
-  const email = faker.internet.email({ firstName: firstName, lastName: lastName });
-  const age = faker.number.int({ min: 1, max: 99 });
-
   accountBalances.forEach(balance => {
+    const firstName = faker.person.firstName();
+    const lastName = faker.person.lastName();
+    const userName = faker.internet.username({ firstName: firstName, lastName: lastName });
+    const password = faker.internet.password();
+    const phone = faker.phone.number({ style: 'international' });
+    const email = faker.internet.email({ firstName: firstName, lastName: lastName });
+    const age = faker.number.int({ min: 1, max: 99 });
+
     const testData = {
       firstName: firstName,
       lastName: lastName,
@@ -30,7 +29,7 @@ describe('Data Driven Test for Account Balances', () => {
       balance: balance.accountBalance,
     };
 
-    it(`Should ${testData.userName} account balance of ${testData.balance} CZK`, () => {
+    it(`Should create an account for ${testData.userName} with a balance of ${testData.balance} CZK`, () => {
       new RegistrationPage()
         .visit()
         .fillUserName(testData.userName)
