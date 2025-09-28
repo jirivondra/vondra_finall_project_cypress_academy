@@ -1,0 +1,62 @@
+{
+  "profilDetailsProfix": [
+    {
+      "name": "name",
+      "text": "Jméno:"
+    },
+    {
+      "name": "surname",
+      "text": "Příjmení:"
+    },
+    {
+      "name": "email",
+      "text": "Email:"
+    },
+    {
+      "name": "phone",
+      "text": "Telefon:"
+    },
+    {
+      "name": "age",
+      "text": "Věk:"
+    }
+  ], 
+  "profileDetailHeader": [
+    {  
+      "type": "button",
+      "name": "toggle-edit-profile-button",
+      "text": "Upravit profil"
+    },
+    {
+        "type": "title",
+        "name": "profile-details-title",
+        "text": "Detaily Profilu"
+    }
+  ],
+  "accountsSection": [
+    {
+        "name": "account-number-heading",
+        "text": "Číslo účtu"
+    },
+    {
+        "name": "account-balance-heading",
+        "text": "Zůstatek"
+    },
+    {
+        "name": "account-type-heading",
+        "text": "Typ účtu"
+    }
+  ],
+  "acountsHeader": [
+    {  
+        "element": "accountsTitle",
+        "type": "title",
+        "text": "Účty"
+    },
+    {
+        "element": "accountAddButton",
+        "type": "button",
+        "text": "Přidat účet"
+    }
+  ]
+}

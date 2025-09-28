@@ -1,0 +1,28 @@
+{
+  "headerItemsType": [
+    {
+      "name":  "logo",
+      "type": "Logo"
+    },
+    {
+      "name": "headTitle",
+      "type": "Title"
+    },
+    {
+      "name": "logOutButton",
+      "type": "Button" 
+    }
+  ],
+  "headerItemsText": [
+    {
+      "type": "Title",
+      "name": "headTitle",
+      "text": "TEG#B Dashboard"
+    },
+    {
+     "type": "Button",
+     "name": "logOutButton",
+     "text": "Odhlásit se"
+    }
+  ]
+}

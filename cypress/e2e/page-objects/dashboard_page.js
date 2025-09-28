@@ -1,0 +1,108 @@
+import { customElement } from '../helper/custom_element';
+import { wait } from '../helper/utils';
+import { Menu } from './common/menu';
+import { profilDetailsProfix, profileDetailHeader, accountsSection } from '../../fixtures/dashboard_data.json';
+
+export class Dashboard extends Menu {
+  constructor() {
+    super('/dashboard');
+
+    this.logOutButton = customElement('.logout-link');
+    this.detailProfil = customElement('[data-testid="account-summary"]');
+    this.detailProfilHeadLine = customElement('[data-testid="profile-details-title"]');
+    this.editProfilButton = customElement('[data-testid="toggle-edit-profile-button"]');
+    this.accountSection = customElement('.accounts');
+    this.accountsTitle = customElement('[data-testid="accounts-title"]');
+    this.accountAddButton = customElement('.account-action');
+    this.accountBalance = customElement('[data-testid="account-balance"]');
+    this.accountNumber = customElement('[data-testid="account-number"]');
+    this.firstname = customElement('[data-testid="name"]');
+    this.lastname = customElement('[data-testid="surname"]');
+    this.email = customElement('[data-testid="email"]');
+    this.phone = customElement('[data-testid="phone"]');
+    this.age = customElement('[data-testid="age"]');
+
+    this.profilDetailItems = profileDetailHeader.map(item => {
+      item.element = customElement(`[data-testid='${item.name}']`);
+      return item;
+    });
+
+    this.profilDetailPrefixItems = profilDetailsProfix.map(item => {
+      item.element = customElement(`[data-testid='${item.name}'] strong`);
+      return item;
+    });
+
+    this.accountsSectionItems = accountsSection.map(item => {
+      item.element = customElement(`[data-testid='${item.name}']`);
+      return item;
+    });
+  }
+
+  waitForGetAccountsAPI(accountsAPI) {
+    wait(accountsAPI);
+    return this;
+  }
+  waitForProfileAPI(accountsAPI) {
+    wait(accountsAPI);
+    return this;
+  }
+
+  waitForLoginAPI(loginApi) {
+    wait(loginApi);
+    return this;
+  }
+
+  accountTypIsVisible() {
+    this.accountType.isVisible();
+    return this;
+  }
+  checkAccountNumber(accountNumber) {
+    this.accountNumber.haveText(accountNumber);
+    return this;
+  }
+
+  checkBalanceAmount(amount) {
+    this.accountBalance.containsText(amount);
+    return this;
+  }
+
+  editProfilButtonIsVisiable() {
+    this.editProfilButton.isVisible();
+    return this;
+  }
+  clickEditProfile() {
+    const { DetailProfilePage } = require('./detail_profile_page');
+    this.editProfilButton.click();
+    return new DetailProfilePage();
+  }
+  checkFirtName(firstname) {
+    this.firstname.haveText('Jméno: ' + firstname);
+    return this;
+  }
+  checklastname(lastname) {
+    this.lastname.haveText('Příjmení: ' + lastname);
+    return this;
+  }
+  checkEmail(email) {
+    this.email.haveText('Email: ' + email);
+    return this;
+  }
+  checkTelephoneNumber(phoneNumber) {
+    this.phone.haveText('Telefon: ' + phoneNumber);
+    return this;
+  }
+  checkAge(age) {
+    this.age.haveText('Věk: ' + age);
+    return this;
+  }
+
+  logOutIsVisiable() {
+    this.logOutButton.isVisible();
+    return this;
+  }
+
+  clickLogOut() {
+    this.logOutButton.click();
+    return this;
+  }
+}
