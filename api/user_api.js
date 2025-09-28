@@ -6,8 +6,6 @@ export class UserApi {
     this.apiUrlLogin = Cypress.env('backend') + '/tegb/login';
     this.method = 'POST';
     this.accessTokenAlias = customElement('@accessToken');
-
-
   }
 
   interceptLoginApi() {
@@ -15,12 +13,12 @@ export class UserApi {
   }
 
   createAccessTokenAlias(data, alias) {
-    createAlias(data, alias)
+    createAlias(data, alias);
     return this;
   }
 
   setAccessToken(accessToken) {
-   setCookie('access_token', accessToken);
+    setCookie('access_token', accessToken);
     return this;
   }
 

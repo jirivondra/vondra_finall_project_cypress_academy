@@ -12,20 +12,15 @@ describe('Data Driven Test for Account Balances', () => {
   accountBalances.forEach(balance => {
     const firstname = faker.person.firstName();
     const lastname = faker.person.lastName();
-    const userName = faker.internet.username({ firstname: firstname, lastname: lastname });
-    const password = faker.internet.password();
-    const phone = faker.phone.number({ style: 'international' });
-    const email = faker.internet.email({ firstname: firstname, lastname: lastname });
-    const age = faker.number.int({ min: 1, max: 99 });
 
     const testData = {
       firstname: firstname,
       lastname: lastname,
-      userName: userName,
-      password: password,
-      phone: phone,
-      age: age,
-      email: email,
+      userName: faker.internet.username({ firstname: firstname, lastname: lastname }),
+      password: faker.internet.password(),
+      phone: faker.phone.number({ style: 'international' }),
+      age: faker.number.int({ min: 1, max: 99 }),
+      email: faker.internet.email({ firstname: firstname, lastname: lastname }),
       balance: balance.accountBalance,
     };
 
@@ -39,7 +34,6 @@ describe('Data Driven Test for Account Balances', () => {
         .checkSuccessRegistrationTitle();
       userApi.login(testData).then(response => {
         expect(response.status).to.eq(201);
-        cy.log('Response body:', JSON.stringify(response.body, null, 2));
         new UserApi().createAccessTokenAlias(response.body.access_token, 'accessToken').setAccessToken('@accessToken');
       });
       userApi.accessTokenAlias.get().then(accessToken => {

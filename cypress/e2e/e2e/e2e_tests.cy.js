@@ -4,7 +4,6 @@ import { LoginPage } from '../page-objects/login_page';
 import { RegistrationPage } from '../page-objects/registration_page';
 import { faker } from '@faker-js/faker';
 
-
 const firstname = faker.person.firstName();
 const lastname = faker.person.lastName();
 const userName = faker.internet.username({ firstname: firstname, lastname: lastname });
